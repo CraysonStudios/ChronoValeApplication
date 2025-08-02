@@ -1,0 +1,4 @@
+name: PaperTemplate
+version: '1.0-SNAPSHOT'
+main: dev.crayson.PaperTemplate
+api-version: '1.21'
