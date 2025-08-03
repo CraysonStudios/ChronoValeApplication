@@ -8,6 +8,7 @@ import dev.triumphteam.gui.guis.Gui
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.OfflinePlayer
+import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
@@ -25,13 +26,13 @@ class ApplicationMenu : Listener {
 
 
     private val cvpxHead = PaperItemBuilder.from(getPlayerHead("cvpx")).asGuiItem {
-        val paper = WearablePaper.create()
+        val paper = WearablePaper.create(it.whoClicked as Player)
         it.whoClicked.inventory.addItem(paper)
         it.whoClicked.sendMessage(mm("You have received a Wearable Paper!"))
     }
 
     private val realMesterHead = PaperItemBuilder.from(getPlayerHead("RealMester")).asGuiItem {
-        val gem = SummoningGem.create()
+        val gem = SummoningGem.create(it.whoClicked as Player)
         it.whoClicked.inventory.addItem(gem)
         it.whoClicked.sendMessage(mm("You have obtained a Summoning Gem!"))
     }
