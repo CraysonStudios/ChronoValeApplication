@@ -1,1 +1,1 @@
-rootProject.name = "PaperTemplate"
+rootProject.name = "ChronoApplication"
