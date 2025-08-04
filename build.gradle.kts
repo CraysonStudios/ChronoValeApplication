@@ -13,21 +13,18 @@ repositories {
         name = "papermc-repo"
     }
     maven {
-        name = "Translations"
-        url = uri("https://nexus.leonardbausenwein.de/repository/maven-public/")
-    }
-    maven {
         url = uri("https://repo.triumphteam.dev/snapshots/")
     }
 }
 
 val lampVersion = "4.0.0-rc.10"
+val adventureVersion = "4.24.0"
+
 dependencies {
-
-    implementation("net.kyori:adventure-text-minimessage:4.24.0")
-    implementation("net.kyori:adventure-text-serializer-plain:4.24.0")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.24.0")
-
+    implementation("net.kyori:adventure-api:${adventureVersion}")
+    implementation("net.kyori:adventure-text-minimessage:${adventureVersion}")
+    implementation("net.kyori:adventure-text-serializer-plain:${adventureVersion}")
+    implementation("net.kyori:adventure-text-serializer-legacy:${adventureVersion}")
 
     // Commands
     implementation("io.github.revxrsal:lamp.common:${lampVersion}")
@@ -35,9 +32,6 @@ dependencies {
 
     // Guis
     implementation("dev.triumphteam:triumph-gui-paper:3.1.13-SNAPSHOT")
-
-    // Translations
-    api("de.cubbossa:TinyTranslations-paper:4.5.0")
 
     implementation("org.slf4j:slf4j-api:2.0.13")
 

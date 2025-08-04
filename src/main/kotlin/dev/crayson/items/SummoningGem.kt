@@ -1,10 +1,9 @@
 package dev.crayson.items
 
-import de.cubbossa.tinytranslations.MessageEncoding
 import dev.crayson.ChronoApplication
-import dev.crayson.text.Messages
 import dev.triumphteam.gui.builder.item.PaperItemBuilder
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.entity.Player
@@ -16,8 +15,8 @@ object SummoningGem {
     fun create(player: Player): ItemStack {
         val locale = player.locale()
         return PaperItemBuilder.from(Material.DIAMOND)
-            .name(Component.text(Messages.SUMMONING_GEM_NAME.message.toString(MessageEncoding.LEGACY_PARAGRAPH)))
-            .lore(Component.text(Messages.SUMMONING_GEM_LORE.message.toString(MessageEncoding.LEGACY_PARAGRAPH, locale)))
+            .name(Messages.SUMMONING_GEM_NAME.getComponent())
+            .lore(Messages.SUMMONING_GEM_LORE.getComponent())
             .build().apply {
                 itemMeta = itemMeta?.apply {
                     persistentDataContainer.set(

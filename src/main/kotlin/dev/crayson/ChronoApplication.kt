@@ -3,11 +3,18 @@ package dev.crayson
 import dev.crayson.commands.GameCommands
 import dev.crayson.gui.ApplicationMenu
 import dev.crayson.listener.EventListener
-import dev.crayson.text.Messages
-import dev.crayson.text.TinyTranslationHandler
+import dev.crayson.text.TranslationManager
+import net.kyori.adventure.key.Key
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.TranslatableComponent
+import net.kyori.adventure.translation.GlobalTranslator
+import net.kyori.adventure.translation.TranslationRegistry
+import net.kyori.adventure.translation.TranslationStore
 import org.bukkit.plugin.java.JavaPlugin
 import revxrsal.commands.bukkit.BukkitLamp
-import java.util.Arrays
+import java.text.MessageFormat
+import java.util.*
+
 
 class ChronoApplication : JavaPlugin() {
 
@@ -17,21 +24,13 @@ class ChronoApplication : JavaPlugin() {
 
     val lamp = BukkitLamp.builder(this).build()
 
-    val translationHandler = TinyTranslationHandler()
 
     lateinit var applicationMenu: ApplicationMenu
 
     override fun onEnable() {
         instance = this
 
-        translationHandler.init()
-
-        Arrays.stream(Messages.values()).forEach { message ->
-            translationHandler.translator.addMessage(message.message)
-        }
-
-        translationHandler.save()
-        translationHandler.load()
+        TranslationManager.init()
 
         lamp.register(GameCommands())
 
