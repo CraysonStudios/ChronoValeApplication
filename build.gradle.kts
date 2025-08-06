@@ -18,13 +18,8 @@ repositories {
 }
 
 val lampVersion = "4.0.0-rc.10"
-val adventureVersion = "4.24.0"
 
 dependencies {
-    implementation("net.kyori:adventure-api:${adventureVersion}")
-    implementation("net.kyori:adventure-text-minimessage:${adventureVersion}")
-    implementation("net.kyori:adventure-text-serializer-plain:${adventureVersion}")
-    implementation("net.kyori:adventure-text-serializer-legacy:${adventureVersion}")
 
     // Commands
     implementation("io.github.revxrsal:lamp.common:${lampVersion}")
