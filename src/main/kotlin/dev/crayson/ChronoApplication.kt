@@ -2,6 +2,7 @@ package dev.crayson
 
 import dev.crayson.commands.GameCommands
 import dev.crayson.gui.ApplicationMenu
+import dev.crayson.listener.ChatListener
 import dev.crayson.listener.EventListener
 import dev.crayson.text.TranslationManager
 import net.kyori.adventure.key.Key
@@ -36,8 +37,11 @@ class ChronoApplication : JavaPlugin() {
 
         applicationMenu = ApplicationMenu()
 
-        server.pluginManager.registerEvents(applicationMenu, this)
-        server.pluginManager.registerEvents(EventListener(), this)
+        server.pluginManager.apply {
+            registerEvents(ChatListener(),this@ChronoApplication)
+            registerEvents(EventListener(),this@ChronoApplication)
+            registerEvents(applicationMenu,this@ChronoApplication)
+        }
 
 
         // Plugin startup logic
