@@ -34,7 +34,7 @@ class ChatListener : Listener, ChatRenderer {
         val itemInHand = source.inventory.itemInMainHand
         val itemMeta = itemInHand.itemMeta
 
-        val itemName = if (itemMeta != null && itemMeta.hasDisplayName()) {
+        val baseName = if (itemMeta != null && itemMeta.hasDisplayName()) {
             itemMeta.displayName()
         } else {
             Component.text(
@@ -44,10 +44,11 @@ class ChatListener : Listener, ChatRenderer {
             )
         }
 
+        val itemName = Component.text("${itemInHand.amount}x ").append(baseName!!)
+
         val hoverTextBuilder = Component.text()
             .append(Component.text("Name: ").color(NamedTextColor.GRAY))
-            .append(itemName!!).append(Component.newline())
-            .append(Component.text("Amount: ${itemInHand.amount}").color(NamedTextColor.GRAY))
+            .append(itemName)
             .append(Component.newline())
 
         val lore = itemMeta?.lore()
